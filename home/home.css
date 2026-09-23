@@ -1,0 +1,277 @@
+/* ================= GENERAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================= NAVBAR ================= */
+
+#navbar {
+    height: 80px;
+    width: 100%;
+
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 40px;
+}
+
+
+/* ================= QMART ================= */
+
+.logo {
+    color: white;
+    text-decoration: none;
+
+    font-size: 28px;
+
+    margin-right: 90px;
+}
+
+
+/* Q IN RED */
+
+.logo::first-letter {
+    color: red;
+}
+
+
+/* ================= NAVIGATION LINKS ================= */
+
+.navlinks {
+    display: flex;
+    gap: 35px;
+}
+
+.navlinks a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+
+/* ================= SEARCH ================= */
+
+.search {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin-left: auto;
+}
+
+
+/* SEARCH INPUT */
+
+.search input {
+    height: 40px;
+    width: 350px;
+
+    border: none;
+    border-radius: 20px;
+
+    outline: none;
+
+    padding-left: 42px;
+
+    font-size: 15px;
+}
+
+
+/* SEARCH ICON */
+
+.search i {
+    position: absolute;
+
+    left: 15px;
+
+    color: gray;
+}
+
+
+/* ================= CART ================= */
+
+.cart {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-left: 35px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+}
+
+
+/* CART ICON */
+
+.cart i {
+    font-size: 22px;
+}
+
+
+/* ================================================= */
+/*                  PRODUCT SECTION                  */
+/* ================================================= */
+
+#productcontainer {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+
+    padding: 30px;
+}
+
+
+/* ================= PRODUCT CARD ================= */
+
+.product {
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    background-color: #fff0f5;
+
+    padding: 15px;
+
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+    transition: 0.3s;
+}
+
+
+/* CARD HOVER */
+
+.product:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ================= IMAGE ================= */
+
+.image {
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* ================= PRODUCT DETAILS ================= */
+
+.productdetails {
+    padding-top: 15px;
+}
+
+
+/* PRODUCT TITLE */
+
+.productdetails h3 {
+    font-size: 17px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= RATING ================= */
+
+.rating {
+    display: inline-block;
+
+    background-color: green;
+
+    color: white;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= PRICE ================= */
+
+.price {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+/* ================= STOCK + DETAILS ================= */
+
+.stockrow {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* STOCK */
+
+.stock {
+    color: green;
+
+    font-size: 14px;
+}
+
+
+/* DETAILS BUTTON */
+
+.details {
+    padding: 8px 18px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background-color: #2874f0;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+/* DETAILS BUTTON HOVER */
+
+.details:hover {
+    background-color: #1259c7;
+}
