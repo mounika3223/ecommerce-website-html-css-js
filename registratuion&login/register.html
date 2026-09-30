@@ -4,61 +4,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account | Qmart</title>
 
-    <title>Create Account</title>
-
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../common.css">
+    <!-- Auth CSS -->
     <link rel="stylesheet" href="./register.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-    <div class="register-container">
+    <div class="auth-layout-container">
+        <!-- Back to store header -->
+        <div class="auth-top-nav">
+            <a href="../home/home.html" class="auth-back-link">
+                <i class="fa-solid fa-arrow-left"></i> Back to Qmart Store
+            </a>
+            <a href="../customer-service.html" class="auth-help-link">
+                Need Help?
+            </a>
+        </div>
 
-        <div class="register-box">
+        <div class="auth-card-wrapper">
+            <!-- Left Side: Register Form -->
+            <div class="auth-form-card">
+                <div class="auth-brand-header">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <span>Qmart<span class="dot" style="color:var(--primary);">.</span></span>
+                </div>
 
-            <h1>Create Account</h1>
+                <!-- Tab Switcher -->
+                <div class="auth-tabs">
+                    <a href="./login.html" class="auth-tab">Sign In</a>
+                    <a href="./register.html" class="auth-tab active">Create Account</a>
+                </div>
 
-            <p class="subtitle">
-                Please fill in your details to register
-            </p>
+                <h1>Join Qmart Today</h1>
+                <p class="auth-subtitle">Create a free account to unlock exclusive member discounts and instant order tracking.</p>
 
-<form id="formContainer">
+                <!-- Social Sign In Options -->
+                <div class="social-login-group">
+                    <button type="button" class="btn-social" onclick="simulateSocialRegister('Google')">
+                        <i class="fa-brands fa-google" style="color:#ea4335;"></i>
+                        <span>Sign up with Google</span>
+                    </button>
+                    <button type="button" class="btn-social" onclick="simulateSocialRegister('Apple')">
+                        <i class="fa-brands fa-apple" style="color:#000;"></i>
+                        <span>Sign up with Apple</span>
+                    </button>
+                </div>
 
-    <label>Full Name</label>
-    <input 
-        type="text" 
-        id="name"
-        placeholder="mounika reddy"
-    >
+                <div class="auth-divider">
+                    <span>or register with email</span>
+                </div>
 
-    <label>Email Address</label>
-    <input 
-        type="email" 
-        id="email"
-        placeholder="lekkalamounikareddy93@gmail.com"
-    >
+                <form id="formContainer">
+                    <div class="form-field-group">
+                        <label for="name">Full Name *</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="name" placeholder="Mounika Reddy" required autocomplete="name">
+                        </div>
+                    </div>
 
-    <label>Password</label>
-    <input 
-        type="password" 
-        id="password"
-        placeholder="••••••••"
-    >
+                    <div class="form-field-group">
+                        <label for="email">Email Address *</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="email" placeholder="mounika@example.com" required autocomplete="email">
+                        </div>
+                    </div>
 
-    <label>Mobile Number</label>
-    <input 
-        type="tel" 
-        id="mobile"
-        placeholder="+91 123 456 7890"
-    >
+                    <div class="form-field-group">
+                        <label for="mobile">Mobile Number (For Shipping Updates) *</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="mobile" placeholder="+91 98765 43210" required autocomplete="tel">
+                        </div>
+                    </div>
 
-    <button type="submit">
-        Register
-    </button>
+                    <div class="form-field-group">
+                        <label for="password">Password *</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password">
+                            <i class="fa-regular fa-eye toggle-pwd" id="togglePwd" title="Show or hide password"></i>
+                        </div>
+                    </div>
 
-</form>
+                    <div class="remember-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required checked>
+                            <span>I agree to the <a href="../about.html" style="color:var(--primary);">Terms of Service</a> & <a href="../customer-service.html" style="color:var(--primary);">Privacy Policy</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-auth-submit">
+                        Create Free Account
+                    </button>
+                </form>
+
+                <p class="auth-footer-prompt">
+                    Already have an account?
+                    <a href="./login.html">Sign In</a>
+                </p>
+            </div>
+
+            <!-- Right Side: Perks / Benefits Card -->
+            <div class="auth-perks-card">
+                <div class="perks-inner">
+                    <span class="perks-badge">Member Privileges</span>
+                    <h2>A Better Way To Shop Online</h2>
+                    <p>Join over 150,000 customers enjoying faster checkout and exclusive member perks.</p>
+
+                    <div class="perks-list">
+                        <div class="perk-item">
+                            <div class="perk-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                            <div>
+                                <strong>Real-Time Shipment Tracking</strong>
+                                <span>Follow your packages from warehouse packing to your doorstep.</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <div class="perk-icon"><i class="fa-solid fa-tags"></i></div>
+                            <div>
+                                <strong>Exclusive Member Deals</strong>
+                                <span>Get 20% off with coupon QMART20 and secret flash sale alerts.</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <div class="perk-icon"><i class="fa-solid fa-heart"></i></div>
+                            <div>
+                                <strong>Saved Wishlists</strong>
+                                <span>Save your favorite items across devices and track price drops.</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <div class="perk-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                            <div>
+                                <strong>One-Click Easy Returns</strong>
+                                <span>Initiate returns and print prepaid shipping labels in seconds.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <script src="../common.js"></script>
     <script src="./register.js"></script>
-
+    <script>
+        function simulateSocialRegister(provider) {
+            const user = {
+                name: "Mounika Reddy",
+                email: "mounika.reddy@example.com",
+                provider: provider
+            };
+            localStorage.setItem("qmart_user", JSON.stringify(user));
+            showToast("Welcome to Qmart!", `Registered with ${provider}. Redirecting to store...`);
+            setTimeout(() => window.location.href = "../home/home.html", 1000);
+        }
+    </script>
 </body>
 
 </html>

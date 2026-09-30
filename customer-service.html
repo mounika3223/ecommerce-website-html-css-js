@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service & Help Center | Qmart</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="./common.css">
+    <!-- Customer Service CSS -->
+    <link rel="stylesheet" href="./customer-service.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= ANNOUNCEMENT BAR ================= -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <span>24/7 Customer Care • Standard shipping is FREE on all orders over $50</span>
+            <span class="sep">•</span>
+            <span>Use code <strong class="coupon-code">QMART20</strong> for 20% off</span>
+        </div>
+        <div class="announcement-links">
+            <a href="./about.html">About Qmart</a>
+            <a href="./contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="main-header">
+        <div class="navbar-inner">
+            <a href="./home/home.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <span>Qmart<span class="dot">.</span></span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="./home/home.html" class="nav-link">Home</a></li>
+                <li><a href="./home/home.html#catalog-section" class="nav-link">Shop</a></li>
+                <li><a href="./customer-service.html" class="nav-link active">Customer Service</a></li>
+                <li><a href="./about.html" class="nav-link">About</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="header-actions" style="margin-left: auto;">
+                <a href="./registratuion&login/login.html" class="action-btn user-account-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Sign In</span>
+                </a>
+
+                <a href="./cart/cart.html" class="cart-pill-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer">
+        <div class="mobile-drawer-content">
+            <div class="mobile-drawer-header">
+                <div class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </div>
+                <button class="mobile-drawer-close" aria-label="Close menu" style="background:none;font-size:22px;color:var(--slate-600);"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="./home/home.html"><i class="fa-solid fa-house" style="margin-right:10px;"></i> Home</a></li>
+                <li><a href="./home/home.html#catalog-section"><i class="fa-solid fa-store" style="margin-right:10px;"></i> Browse Store</a></li>
+                <li><a href="./customer-service.html" class="active"><i class="fa-solid fa-headset" style="margin-right:10px;"></i> Customer Service</a></li>
+                <li><a href="./cart/cart.html"><i class="fa-solid fa-cart-shopping" style="margin-right:10px;"></i> Shopping Cart</a></li>
+                <li><a href="./about.html"><i class="fa-solid fa-circle-info" style="margin-right:10px;"></i> About Us</a></li>
+                <li><a href="./contact.html"><i class="fa-solid fa-envelope" style="margin-right:10px;"></i> Contact Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ================= HELP CENTER HERO ================= -->
+    <section class="help-hero">
+        <div class="help-hero-container">
+            <span class="help-badge"><i class="fa-solid fa-life-ring"></i> Customer Support Hub</span>
+            <h1>How can we assist you today?</h1>
+            <p>Search our help articles, track packages in real-time, or request quick returns.</p>
+
+            <form role="search" class="help-search-box" onsubmit="event.preventDefault();">
+                <label for="faqSearchInput" class="sr-only">Search help articles and frequently asked questions</label>
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" 
+                       id="faqSearchInput" 
+                       name="help_query" 
+                       placeholder="Type a question, e.g., 'delivery time', 'return policy', 'refunds'..." 
+                       autocomplete="off" 
+                       aria-label="Search help articles and frequently asked questions">
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= QUICK SELF-SERVICE CARDS ================= -->
+    <section class="cs-quick-section">
+        <div class="cs-container">
+            <div class="quick-grid">
+
+                <!-- 1. Track Order -->
+                <div class="quick-card" onclick="scrollToSection('orderTrackingSection')">
+                    <div class="quick-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <h3>Track My Package</h3>
+                    <p>Check the live delivery status and estimated arrival date of your recent shipment.</p>
+                    <span class="quick-link">Track Order <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- 2. Returns -->
+                <div class="quick-card" onclick="openReturnModal()">
+                    <div class="quick-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                    <h3>Start A Return</h3>
+                    <p>Hassle-free 30-day returns on all eligible items with prepaid shipping labels.</p>
+                    <span class="quick-link">Initiate Return <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- 3. Shipping Info -->
+                <div class="quick-card" onclick="filterFaqCategory('shipping')">
+                    <div class="quick-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3>Shipping Rates & Times</h3>
+                    <p>Learn about our standard, express, and international transit schedules.</p>
+                    <span class="quick-link">View Shipping <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- 4. Payment & Billing -->
+                <div class="quick-card" onclick="filterFaqCategory('payments')">
+                    <div class="quick-icon"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3>Payment & Invoices</h3>
+                    <p>Details on accepted credit cards, PayPal, UPI, and tax invoice copies.</p>
+                    <span class="quick-link">Billing Help <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INTERACTIVE ORDER TRACKING TOOL ================= -->
+    <section class="order-tracking-section" id="orderTrackingSection">
+        <div class="cs-container">
+            <div class="tracking-card">
+                <div class="tracking-header">
+                    <h2><i class="fa-solid fa-truck-arrow-right" style="color:var(--primary);margin-right:10px;"></i> Package Tracking Tool</h2>
+                    <p>Enter your Qmart Order ID or tracking code to check real-time dispatch progress.</p>
+                </div>
+
+                <form class="tracking-form" onsubmit="handleTrackOrder(event)">
+                    <div class="tracking-input-group">
+                        <label for="trackOrderId">Order Reference Number</label>
+                        <input type="text" id="trackOrderId" placeholder="e.g. #QM-84920 or QM12345" required>
+                    </div>
+                    <div class="tracking-input-group">
+                        <label for="trackEmail">Billing Email Address</label>
+                        <input type="email" id="trackEmail" placeholder="your-email@example.com" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="height: 44px; margin-top: auto;">
+                        <i class="fa-solid fa-magnifying-glass"></i> Track Package
+                    </button>
+                </form>
+
+                <!-- Tracking Results Box (Hidden until searched) -->
+                <div id="trackingResultBox" class="tracking-result-box" style="display: none;">
+                    <div class="tracking-meta">
+                        <div>
+                            <span class="text-muted">Order ID:</span>
+                            <strong id="resOrderId">#QM-84920</strong>
+                        </div>
+                        <div>
+                            <span class="text-muted">Carrier:</span>
+                            <strong>FedEx Express (#FX-94829103)</strong>
+                        </div>
+                        <div>
+                            <span class="text-muted">Status:</span>
+                            <span class="status-pill in-transit" id="resStatus">In Transit</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress timeline -->
+                    <div class="tracking-timeline">
+                        <div class="step-point completed">
+                            <div class="dot"><i class="fa-solid fa-check"></i></div>
+                            <span class="step-title">Order Confirmed</span>
+                            <span class="step-time">Oct 28, 9:15 AM</span>
+                        </div>
+                        <div class="step-line active"></div>
+                        <div class="step-point completed">
+                            <div class="dot"><i class="fa-solid fa-check"></i></div>
+                            <span class="step-title">Packed & Ready</span>
+                            <span class="step-time">Oct 28, 2:30 PM</span>
+                        </div>
+                        <div class="step-line active"></div>
+                        <div class="step-point active">
+                            <div class="dot"><i class="fa-solid fa-truck"></i></div>
+                            <span class="step-title">In Transit</span>
+                            <span class="step-time">Oct 29, 6:45 AM</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step-point">
+                            <div class="dot"><i class="fa-solid fa-house"></i></div>
+                            <span class="step-title">Delivered</span>
+                            <span class="step-time">Est. Tomorrow</span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Your courier driver will deliver between 10:00 AM - 4:00 PM. No signature required.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FAQ SECTION ================= -->
+    <section class="faq-section">
+        <div class="cs-container">
+            <div class="faq-header-wrap">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find immediate answers to our most common customer inquiries below.</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="faq-tabs">
+                <button class="faq-tab-btn active" data-cat="all" onclick="filterFaqTab('all', this)">All Questions</button>
+                <button class="faq-tab-btn" data-cat="orders" onclick="filterFaqTab('orders', this)">Orders & Tracking</button>
+                <button class="faq-tab-btn" data-cat="shipping" onclick="filterFaqTab('shipping', this)">Shipping & Delivery</button>
+                <button class="faq-tab-btn" data-cat="returns" onclick="filterFaqTab('returns', this)">Returns & Refunds</button>
+                <button class="faq-tab-btn" data-cat="payments" onclick="filterFaqTab('payments', this)">Payments & Discounts</button>
+            </div>
+
+            <div class="faq-accordion" id="faqAccordion">
+
+                <!-- Q1 -->
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I track the shipping progress of my order?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order is processed, you will receive an email confirmation with an automated tracking link. You can also use our <a href="#orderTrackingSection" style="color:var(--primary);font-weight:600;">Package Tracking Tool</a> above by entering your Order Reference ID (e.g., #QM-84920).</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item" data-category="shipping">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What are the shipping costs and estimated transit times?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard delivery is <strong>completely free</strong> on all orders over $50. For orders under $50, a flat shipping fee of $4.99 applies. Standard shipping takes 3-5 business days, while Express Priority shipping delivers within 1-2 business days.</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is your 30-day return and exchange policy?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We want you to love your purchase. If you are not completely satisfied, you can return any item within 30 days of delivery in original packaging for a full refund or replacement. No restocking fees are ever charged.</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item" data-category="payments">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Which payment methods and currencies do you accept?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit and debit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, Google Pay, and UPI / Cash on Delivery where supported. All transactions are protected by bank-grade 256-bit SSL encryption.</p>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I modify or cancel my order after placing it?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Orders can be modified or cancelled within 2 hours of placement before they enter the warehouse packing stage. Please contact our 24/7 support line or message us via Live Chat immediately with your order number.</p>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="faq-item" data-category="payments">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I redeem promotional codes like QMART20?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>In your Shopping Cart page, enter your promo code into the "Have a discount coupon?" box and click "Apply". Valid codes such as <strong>QMART20</strong> will immediately deduct the discount from your subtotal.</p>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="faq-item" data-category="shipping">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What should I do if my package arrives damaged or missing?</span>
+                        <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please take a clear photo of the damaged package and reach out to our Customer Care team at <strong>support@qmart.com</strong>. We will arrange a complimentary immediate replacement or full refund within 24 hours.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT CHANNELS STRIP ================= -->
+    <section class="support-channels-section">
+        <div class="cs-container">
+            <div class="channels-card">
+                <div class="channels-content">
+                    <h2>Still need assistance?</h2>
+                    <p>Our friendly customer care advocates are on standby 24 hours a day, 7 days a week.</p>
+                </div>
+                <div class="channels-buttons">
+                    <button class="btn btn-primary" onclick="openLiveChatWidget()">
+                        <i class="fa-solid fa-comments"></i> Start Live Chat
+                    </button>
+                    <a href="tel:+919876543210" class="btn btn-secondary">
+                        <i class="fa-solid fa-phone"></i> Call 1-800-QMART
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= RETURN REQUEST MODAL ================= -->
+    <div class="modal-overlay" id="returnModal">
+        <div class="modal-dialog">
+            <button class="modal-close-btn" onclick="closeReturnModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="checkout-modal-header">
+                <h2>Initiate A Return or Replacement</h2>
+                <p>Fill out the details below to receive your prepaid return shipping label.</p>
+            </div>
+            <form onsubmit="handleReturnSubmit(event)">
+                <div class="form-control">
+                    <label>Order Reference ID *</label>
+                    <input type="text" placeholder="e.g. #QM-84920" required>
+                </div>
+                <div class="form-control">
+                    <label>Reason for Return *</label>
+                    <select required>
+                        <option value="">Please select a reason</option>
+                        <option value="damaged">Item arrived damaged or defective</option>
+                        <option value="wrong">Received incorrect item</option>
+                        <option value="unsatisfied">Product didn't meet expectations</option>
+                        <option value="duplicate">Ordered by mistake</option>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label>Preferred Resolution *</label>
+                    <select required>
+                        <option value="refund">Full Refund to Original Payment Method</option>
+                        <option value="replace">Direct Replacement Shipment</option>
+                        <option value="credit">Store Credit with 5% Bonus</option>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label>Additional Notes</label>
+                    <textarea rows="3" placeholder="Briefly describe the condition or issue..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; height: 46px; margin-top: 10px;">
+                    Submit Return Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="global-footer">
+        <div class="footer-top">
+            <div class="footer-col footer-brand">
+                <a href="./home/home.html" class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </a>
+                <p>Your premier online shopping destination. Discover high-quality tech, skincare, fragrances, and home goods with seamless shopping and rapid doorstep delivery.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="./customer-service.html">Help Center</a></li>
+                    <li><a href="#orderTrackingSection">Track My Package</a></li>
+                    <li><a href="./customer-service.html">Returns & Refunds</a></li>
+                    <li><a href="./contact.html">Contact Support</a></li>
+                    <li><a href="./about.html">About Qmart</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="./home/home.html#catalog-section">Electronics & Laptops</a></li>
+                    <li><a href="./home/home.html#catalog-section">Beauty & Personal Care</a></li>
+                    <li><a href="./home/home.html#catalog-section">Luxury Fragrances</a></li>
+                    <li><a href="./home/home.html#catalog-section">Home & Living</a></li>
+                    <li><a href="./cart/cart.html">View Shopping Bag</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-newsletter">
+                <h3>Secure Shopping</h3>
+                <p>We accept major credit cards, debit cards, PayPal, and digital wallets with 256-bit SSL encryption.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>© 2026 <strong>Qmart</strong> Inc. All rights reserved.</p>
+                <p>Dedicated to delivering exceptional quality and customer care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="./common.js"></script>
+    <script>
+        // Track Order
+        function handleTrackOrder(e) {
+            e.preventDefault();
+            const orderId = document.getElementById("trackOrderId").value.trim();
+            const resBox = document.getElementById("trackingResultBox");
+            const resId = document.getElementById("resOrderId");
+
+            if (resBox && resId) {
+                resId.textContent = orderId.toUpperCase();
+                resBox.style.display = "block";
+                resBox.scrollIntoView({ behavior: "smooth" });
+                showToast("Package Located", `Tracking updates loaded for order ${orderId.toUpperCase()}`);
+            }
+        }
+
+        // Return Modal
+        function openReturnModal() {
+            const m = document.getElementById("returnModal");
+            if (m) {
+                m.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        function closeReturnModal() {
+            const m = document.getElementById("returnModal");
+            if (m) {
+                m.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        }
+
+        function handleReturnSubmit(e) {
+            e.preventDefault();
+            closeReturnModal();
+            showToast("Return Authorized!", "We have emailed your prepaid shipping label and return instructions.");
+        }
+
+        // FAQ Toggle
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            item.classList.toggle("open");
+        }
+
+        // FAQ Category Tabs
+        function filterFaqTab(category, btn) {
+            document.querySelectorAll(".faq-tab-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            document.querySelectorAll(".faq-item").forEach(item => {
+                if (category === "all" || item.getAttribute("data-category") === category) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        function filterFaqCategory(category) {
+            const tab = document.querySelector(`.faq-tab-btn[data-cat="${category}"]`);
+            if (tab) {
+                tab.click();
+                tab.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        function scrollToSection(id) {
+            const sec = document.getElementById(id);
+            if (sec) sec.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Search FAQ
+        const faqSearch = document.getElementById("faqSearchInput");
+        if (faqSearch) {
+            faqSearch.addEventListener("input", (e) => {
+                const q = e.target.value.toLowerCase().trim();
+                document.querySelectorAll(".faq-item").forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(q)) {
+                        item.style.display = "block";
+                        if (q.length > 2) item.classList.add("open");
+                    } else {
+                        item.style.display = "none";
+                        item.classList.remove("open");
+                    }
+                });
+            });
+        }
+    </script>
+
+</body>
+
+</html>

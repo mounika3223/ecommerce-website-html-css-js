@@ -1,739 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | E-Commerce Website</title>
-    <link rel="stylesheet" href="about.css">
+    <title>About Qmart | Our Story & Sourcing Standards</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="./common.css">
+    <!-- About Specific CSS -->
+    <link rel="stylesheet" href="./about.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-    <!-- Navbar -->
-
-    <header class="navbar">
-
-        <div class="logo">
-            MyStore
+    <!-- ================= ANNOUNCEMENT BAR ================= -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <span>Free Standard Shipping on all orders over $50</span>
+            <span class="sep">•</span>
+            <span>Use code <strong class="coupon-code">QMART20</strong> for 20% off your purchase</span>
         </div>
+        <div class="announcement-links">
+            <a href="./customer-service.html">Help & FAQ</a>
+            <a href="./contact.html">Contact Us</a>
+        </div>
+    </div>
 
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="cart/cart.html">Cart</a>
-        </nav>
+    <!-- ================= NAVBAR ================= -->
+    <header class="main-header">
+        <div class="navbar-inner">
+            <a href="./home/home.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <span>Qmart<span class="dot">.</span></span>
+            </a>
 
+            <ul class="nav-menu">
+                <li><a href="./home/home.html" class="nav-link">Home</a></li>
+                <li><a href="./home/home.html#catalog-section" class="nav-link">Shop</a></li>
+                <li><a href="./customer-service.html" class="nav-link">Customer Service</a></li>
+                <li><a href="./about.html" class="nav-link active">About</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="header-actions" style="margin-left: auto;">
+                <a href="./registratuion&login/login.html" class="action-btn user-account-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Sign In</span>
+                </a>
+
+                <a href="./cart/cart.html" class="cart-pill-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
     </header>
 
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer">
+        <div class="mobile-drawer-content">
+            <div class="mobile-drawer-header">
+                <div class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </div>
+                <button class="mobile-drawer-close" aria-label="Close menu" style="background:none;font-size:22px;color:var(--slate-600);"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="./home/home.html"><i class="fa-solid fa-house" style="margin-right:10px;"></i> Home</a></li>
+                <li><a href="./home/home.html#catalog-section"><i class="fa-solid fa-store" style="margin-right:10px;"></i> Browse Store</a></li>
+                <li><a href="./customer-service.html"><i class="fa-solid fa-headset" style="margin-right:10px;"></i> Customer Service</a></li>
+                <li><a href="./cart/cart.html"><i class="fa-solid fa-cart-shopping" style="margin-right:10px;"></i> Shopping Cart</a></li>
+                <li><a href="./about.html" class="active"><i class="fa-solid fa-circle-info" style="margin-right:10px;"></i> About Qmart</a></li>
+                <li><a href="./contact.html"><i class="fa-solid fa-envelope" style="margin-right:10px;"></i> Contact Support</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <!-- Hero Section -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <p class="tag">ABOUT THE PROJECT</p>
-
+    <!-- ================= ABOUT HERO ================= -->
+    <section class="about-hero">
+        <div class="about-hero-container">
+            <span class="hero-tag"><i class="fa-solid fa-award"></i> The Qmart Promise</span>
             <h1>
-                More Than Just
-                <span>A Shopping Interface.</span>
+                Everyday Quality. Honest Value.
+                <span>Delivered to Your Door.</span>
             </h1>
-
-            <p class="hero-text">
-                A dynamic e-commerce experience built to explore
-                how modern frontend technologies work together
-                to create an interactive shopping experience.
+            <p>
+                Founded with a simple yet ambitious purpose: to make premium electronics, authentic skincare, luxury fragrances, and home goods accessible to everyone without inflated department store markups.
             </p>
-
-            <a href="home.html" class="primary-btn">
-                Explore Products
-            </a>
-
+            <div class="about-hero-actions">
+                <a href="./home/home.html#catalog-section" class="btn btn-primary">
+                    <i class="fa-solid fa-bag-shopping"></i> Shop Our Collection
+                </a>
+                <a href="./customer-service.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-headset"></i> Customer Service
+                </a>
+            </div>
         </div>
-
-        <div class="hero-visual">
-
-            <div class="visual-circle">
-                🛍️
-            </div>
-
-            <div class="floating-card card-one">
-                🔍 Search
-            </div>
-
-            <div class="floating-card card-two">
-                🛒 Cart
-            </div>
-
-            <div class="floating-card card-three">
-                💾 Storage
-            </div>
-
-        </div>
-
     </section>
 
-
-    <!-- About Project -->
-
-    <section class="about-project">
-
-        <div class="section-title">
-
-            <p>THE PROJECT</p>
-
-            <h2>
-                Built From Ideas.
-                <span>Powered By JavaScript.</span>
-            </h2>
-
-        </div>
-
-        <div class="about-grid">
-
-            <div class="about-text">
-
-                <p>
-                    This e-commerce website is a frontend project
-                    created to turn core web development concepts
-                    into a practical shopping experience.
-                </p>
-
-                <p>
-                    Products are dynamically fetched from an
-                    external REST API and displayed through an
-                    interactive user interface.
-                </p>
-
-                <p>
-                    Users can explore products, search and filter
-                    items, view product details, add products to
-                    the cart, and manage their selected items.
-                </p>
-
-                <p>
-                    The project helped me understand how different
-                    frontend concepts work together to create a
-                    real-world web application.
-                </p>
-
+    <!-- ================= COMPANY PILLARS / STANDARDS ================= -->
+    <section class="pillars-section">
+        <div class="section-container">
+            <div class="section-header-center">
+                <span class="catalog-pill">Why Shop With Us</span>
+                <h2>Built on Trust, Authenticity, and Care</h2>
+                <p>We believe online shopping should be seamless, transparent, and completely risk-free.</p>
             </div>
 
-            <div class="project-card">
-
-                <div class="project-icon">
-                    💻
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <h3>100% Verified Authentic</h3>
+                    <p>We source all catalog items directly from certified manufacturers and authorized global distributors. Every shipment undergoes a multi-point authenticity inspection.</p>
                 </div>
 
-                <h3>
-                    Interactive E-Commerce
-                </h3>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-tags"></i></div>
+                    <h3>Direct-to-Consumer Value</h3>
+                    <p>By eliminating unnecessary retail middlemen and costly physical department store overhead, we pass genuine cost savings directly on to you.</p>
+                </div>
 
-                <p>
-                    Designed and developed using
-                    HTML, CSS and JavaScript.
-                </p>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>30-Day Risk-Free Returns</h3>
+                    <p>If an item doesn't meet your expectations, return it within 30 days for a full refund or replacement. No restocking penalties, no complicated hoops.</p>
+                </div>
 
-                <div class="project-stats">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3>Eco-Friendly Packaging</h3>
+                    <p>We utilize 100% recyclable shipping cartons and biodegradable protective wrap, keeping your products secure while reducing environmental impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div>
-                        <strong>HTML</strong>
-                        <span>Structure</span>
+    <!-- ================= BRAND STORY & MILESTONES ================= -->
+    <section class="story-section">
+        <div class="section-container">
+            <div class="story-content-grid">
+                <div class="story-text">
+                    <span class="catalog-pill">Our Journey</span>
+                    <h2>From A Curated Boutique to Nationwide Favorite</h2>
+                    <p>
+                        Qmart was started with a team of retail specialists who were tired of seeing customers pay 3x to 5x markups for essential everyday lifestyle items. We set out to build an online department store where exceptional product quality meets accessible pricing.
+                    </p>
+                    <p>
+                        Today, Qmart fulfills thousands of packages daily across multiple categories—from top-rated laptops and smartphones to dermatologist-tested skincare formulas and artisanal home fragrances.
+                    </p>
+                    <div class="milestones-row">
+                        <div class="milestone-box">
+                            <span class="milestone-num">150K+</span>
+                            <span class="milestone-lbl">Orders Delivered</span>
+                        </div>
+                        <div class="milestone-box">
+                            <span class="milestone-num">99.4%</span>
+                            <span class="milestone-lbl">On-Time Dispatch</span>
+                        </div>
+                        <div class="milestone-box">
+                            <span class="milestone-num">4.9 / 5</span>
+                            <span class="milestone-lbl">Satisfaction Score</span>
+                        </div>
                     </div>
-
-                    <div>
-                        <strong>CSS</strong>
-                        <span>Design</span>
-                    </div>
-
-                    <div>
-                        <strong>JS</strong>
-                        <span>Logic</span>
-                    </div>
-
                 </div>
 
+                <div class="story-highlight-card">
+                    <h3>The Qmart Standard</h3>
+                    <ul class="standards-list">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>Strict Quality Inspection</strong>
+                                <p>No expired batches, grey-market goods, or refurbished items sold as new.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>Real-Time Stock Guarantee</strong>
+                                <p>If an item says "In Stock", it is physically sitting in our fulfillment warehouse.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>24/7 Human Customer Care</strong>
+                                <p>Real assistance from specialists, never robotic dead ends.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- How It Works -->
-
-    <section class="workflow">
-
-        <div class="section-title center">
-
-            <p>BEHIND THE SCREEN</p>
-
-            <h2>
-                From API Data To
-                <span>Shopping Experience</span>
-            </h2>
-
-            <p class="section-description">
-                A look at how the different technologies work
-                together behind the interface.
-            </p>
-
+    <!-- ================= LEADERSHIP COMMITMENT ================= -->
+    <section class="quote-section">
+        <div class="section-container">
+            <div class="quote-card">
+                <i class="fa-solid fa-quote-left quote-mark"></i>
+                <blockquote>
+                    "Our goal at Qmart isn't just to sell products—it's to earn your trust on every delivery. From the moment you place an order to the minute it arrives on your doorstep, our team works tirelessly to ensure your experience is nothing short of exceptional."
+                </blockquote>
+                <div class="quote-author">
+                    <strong>The Qmart Customer Experience Team</strong>
+                    <span>Dedicated to Quality & Service Excellence</span>
+                </div>
+            </div>
         </div>
-
-
-        <div class="flow">
-
-            <div class="flow-card">
-
-                <div class="flow-number">
-                    01
-                </div>
-
-                <div class="flow-icon">
-                    🌐
-                </div>
-
-                <h3>
-                    REST API
-                </h3>
-
-                <p>
-                    Product information is retrieved
-                    from an external API.
-                </p>
-
-            </div>
-
-
-            <div class="arrow">
-                →
-            </div>
-
-
-            <div class="flow-card">
-
-                <div class="flow-number">
-                    02
-                </div>
-
-                <div class="flow-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Fetch API
-                </h3>
-
-                <p>
-                    JavaScript fetches and processes
-                    the product data.
-                </p>
-
-            </div>
-
-
-            <div class="arrow">
-                →
-            </div>
-
-
-            <div class="flow-card">
-
-                <div class="flow-number">
-                    03
-                </div>
-
-                <div class="flow-icon">
-                    🧩
-                </div>
-
-                <h3>
-                    DOM
-                </h3>
-
-                <p>
-                    Product information is dynamically
-                    displayed on the page.
-                </p>
-
-            </div>
-
-
-            <div class="arrow">
-                →
-            </div>
-
-
-            <div class="flow-card">
-
-                <div class="flow-number">
-                    04
-                </div>
-
-                <div class="flow-icon">
-                    🛒
-                </div>
-
-                <h3>
-                    Cart
-                </h3>
-
-                <p>
-                    Users can add, view and remove
-                    products from their cart.
-                </p>
-
-            </div>
-
-
-            <div class="arrow">
-                →
-            </div>
-
-
-            <div class="flow-card">
-
-                <div class="flow-number">
-                    05
-                </div>
-
-                <div class="flow-icon">
-                    💾
-                </div>
-
-                <h3>
-                    LocalStorage
-                </h3>
-
-                <p>
-                    Cart information is stored in
-                    the browser.
-                </p>
-
-            </div>
-
-        </div>
-
     </section>
 
-
-    <!-- Features -->
-
-    <section class="features">
-
-        <div class="section-title center">
-
-            <p>FEATURES</p>
-
-            <h2>
-                What You Can
-                <span>Do On The Website</span>
-            </h2>
-
+    <!-- ================= VALUE PROPOSITION STRIP ================= -->
+    <section class="trust-strip">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="trust-info">
+                    <h4>Fast & Free Delivery</h4>
+                    <p>Free standard delivery on orders over $50</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="trust-info">
+                    <h4>Secure Checkout</h4>
+                    <p>Protected by 256-bit bank-grade encryption</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <div class="trust-info">
+                    <h4>30-Day Easy Returns</h4>
+                    <p>Hassle-free replacement or full refund</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="trust-info">
+                    <h4>24/7 Dedicated Support</h4>
+                    <p>Friendly customer care whenever you need</p>
+                </div>
+            </div>
         </div>
-
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🔍
-                </div>
-
-                <h3>
-                    Search Products
-                </h3>
-
-                <p>
-                    Search through products and
-                    quickly find what you need.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🏷️
-                </div>
-
-                <h3>
-                    Filter Products
-                </h3>
-
-                <p>
-                    Filter products to make browsing
-                    easier and faster.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📋
-                </div>
-
-                <h3>
-                    Product Details
-                </h3>
-
-                <p>
-                    View detailed information about
-                    individual products.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🛒
-                </div>
-
-                <h3>
-                    Add To Cart
-                </h3>
-
-                <p>
-                    Add products and manage your
-                    selected shopping items.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    ❌
-                </div>
-
-                <h3>
-                    Remove From Cart
-                </h3>
-
-                <p>
-                    Easily remove products that
-                    you no longer want.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    💾
-                </div>
-
-                <h3>
-                    LocalStorage
-                </h3>
-
-                <p>
-                    Store cart information using
-                    browser LocalStorage.
-                </p>
-
-            </div>
-
-        </div>
-
     </section>
 
-
-    <!-- Technologies -->
-
-    <section class="technologies">
-
-        <div class="section-title center">
-
-            <p>TECHNOLOGY STACK</p>
-
-            <h2>
-                Technologies Behind
-                <span>The Project</span>
-            </h2>
-
-        </div>
-
-
-        <div class="tech-grid">
-
-            <div class="tech-card">
-
-                <div class="tech-logo html">
-                    HTML
+    <!-- ================= FOOTER ================= -->
+    <footer class="global-footer">
+        <div class="footer-top">
+            <div class="footer-col footer-brand">
+                <a href="./home/home.html" class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </a>
+                <p>Your premier online shopping destination. Discover high-quality tech, skincare, fragrances, and home goods with seamless shopping and rapid doorstep delivery.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 </div>
-
-                <h3>
-                    HTML5
-                </h3>
-
-                <p>
-                    Website structure and semantic
-                    page elements.
-                </p>
-
             </div>
 
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="./customer-service.html">Help Center</a></li>
+                    <li><a href="./customer-service.html#orderTrackingSection">Track My Package</a></li>
+                    <li><a href="./customer-service.html">Returns & Refunds</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./about.html">About Qmart</a></li>
+                </ul>
+            </div>
 
-            <div class="tech-card">
+            <div class="footer-col">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="./home/home.html#catalog-section">Electronics & Laptops</a></li>
+                    <li><a href="./home/home.html#catalog-section">Beauty & Personal Care</a></li>
+                    <li><a href="./home/home.html#catalog-section">Luxury Fragrances</a></li>
+                    <li><a href="./home/home.html#catalog-section">Home & Living</a></li>
+                    <li><a href="./cart/cart.html">View Shopping Bag</a></li>
+                </ul>
+            </div>
 
-                <div class="tech-logo css">
-                    CSS
+            <div class="footer-col footer-newsletter">
+                <h3>Secure Shopping</h3>
+                <p>We accept major credit cards, debit cards, PayPal, and digital wallets with 256-bit SSL encryption.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
                 </div>
-
-                <h3>
-                    CSS3
-                </h3>
-
-                <p>
-                    Styling, layouts, animations and
-                    responsive design.
-                </p>
-
             </div>
-
-
-            <div class="tech-card">
-
-                <div class="tech-logo js">
-                    JS
-                </div>
-
-                <h3>
-                    JavaScript
-                </h3>
-
-                <p>
-                    Dynamic functionality, interactions
-                    and application logic.
-                </p>
-
-            </div>
-
-
-            <div class="tech-card">
-
-                <div class="tech-logo api">
-                    API
-                </div>
-
-                <h3>
-                    Fetch API
-                </h3>
-
-                <p>
-                    Retrieving product information
-                    from an external REST API.
-                </p>
-
-            </div>
-
-
-            <div class="tech-card">
-
-                <div class="tech-logo storage">
-                    LS
-                </div>
-
-                <h3>
-                    LocalStorage
-                </h3>
-
-                <p>
-                    Storing and retrieving cart
-                    information in the browser.
-                </p>
-
-            </div>
-
         </div>
-
-    </section>
-
-
-    <!-- Learning -->
-
-    <section class="learning">
-
-        <div class="learning-content">
-
-            <p class="tag">
-                MY LEARNING JOURNEY
-            </p>
-
-            <h2>
-                Building Projects.
-                Learning Through Practice.
-            </h2>
-
-            <p>
-                This project is part of my journey in learning
-                web development. Instead of only learning concepts
-                individually, I wanted to bring them together
-                in a practical application.
-            </p>
-
-            <p>
-                While building this project, I practiced working
-                with APIs, promises, JSON data, DOM manipulation,
-                JavaScript array methods, LocalStorage and
-                interactive UI elements.
-            </p>
-
-            <p>
-                Each improvement helped me understand that a good
-                website is not only about functionality, but also
-                about creating a clean, responsive and
-                user-friendly experience.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- Improvement -->
-
-    <section class="improvement">
-
-        <div class="section-title center">
-
-            <p>ALWAYS IMPROVING</p>
-
-            <h2>
-                Learn. Build.
-                <span>Improve. Repeat.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="improvement-flow">
-
-            <div class="improve-item">
-                <div>01</div>
-                <h3>Learn</h3>
-                <p>
-                    Understand new concepts and technologies.
-                </p>
-            </div>
-
-            <div class="improve-arrow">
-                →
-            </div>
-
-            <div class="improve-item">
-                <div>02</div>
-                <h3>Build</h3>
-                <p>
-                    Turn concepts into practical projects.
-                </p>
-            </div>
-
-            <div class="improve-arrow">
-                →
-            </div>
-
-            <div class="improve-item">
-                <div>03</div>
-                <h3>Get Feedback</h3>
-                <p>
-                    Identify areas that can be improved.
-                </p>
-            </div>
-
-            <div class="improve-arrow">
-                →
-            </div>
-
-            <div class="improve-item">
-                <div>04</div>
-                <h3>Improve</h3>
-                <p>
-                    Make the experience cleaner and better.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-
-    <section class="cta">
-
-        <div class="cta-box">
-
-            <p>
-                READY TO EXPLORE?
-            </p>
-
-            <h2>
-                Discover The Shopping Experience
-            </h2>
-
-            <a href="home.html">
-                Start Shopping
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- Footer -->
-
-    <footer>
-
-        <div class="footer-main">
-
-            <div class="footer-brand">
-
-                <h3>
-                    MyStore
-                </h3>
-
-                <p>
-                    A frontend e-commerce project built
-                    with HTML, CSS and JavaScript.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <nav>
-
-    <a href="./home/home.html">Home</a>
-
-    <a href="./about.html" class="active">About</a>
-
-    <a href="./cart/cart.html">Cart</a>
-
-</nav>
-
-            </div>
-
-        </div>
-
 
         <div class="footer-bottom">
-
-            © 2026 MyStore | Built with HTML, CSS & JavaScript
-
+            <div class="footer-bottom-inner">
+                <p>© 2026 <strong>Qmart</strong> Inc. All rights reserved.</p>
+                <p>Dedicated to delivering exceptional quality, authenticity, and customer care.</p>
+            </div>
         </div>
-
     </footer>
 
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="./common.js"></script>
+
 </body>
+
 </html>

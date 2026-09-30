@@ -1,15 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./details.css">
-</head>
-<body>
-    <div id="productDetails">Welcome to Details Page</div>
-    <div id="reviews"></div>
+    <title>Product Details | Qmart</title>
 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../common.css">
+    <!-- Details Specific CSS -->
+    <link rel="stylesheet" href="./details.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= ANNOUNCEMENT BAR ================= -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <span>Customer Helpline: <strong style="color:var(--white);">1-800-QMART (24/7 Support)</strong></span>
+            <span class="sep">•</span>
+            <span>Free Standard Delivery on orders over $50</span>
+            <span class="sep">•</span>
+            <span>Use code <strong class="coupon-code">QMART20</strong> for 20% off</span>
+        </div>
+        <div class="announcement-links">
+            <a href="../customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service</a>
+            <a href="../customer-service.html#orderTrackingSection"><i class="fa-solid fa-truck-fast"></i> Track Order</a>
+            <a href="../about.html">About Us</a>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="main-header">
+        <div class="navbar-inner">
+            <a href="../home/home.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <span>Qmart<span class="dot">.</span></span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="../home/home.html" class="nav-link">Home</a></li>
+                <li><a href="../home/home.html#catalog-section" class="nav-link active">Shop</a></li>
+                <li><a href="../customer-service.html" class="nav-link">Customer Service</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="header-actions" style="margin-left: auto;">
+                <a href="../customer-service.html#orderTrackingSection" class="action-btn" title="Track package">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Track</span>
+                </a>
+
+                <a href="../registratuion&login/login.html" class="action-btn user-account-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Sign In</span>
+                </a>
+
+                <a href="../cart/cart.html" class="cart-pill-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer">
+        <div class="mobile-drawer-content">
+            <div class="mobile-drawer-header">
+                <div class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </div>
+                <button class="mobile-drawer-close" aria-label="Close menu" style="background:none;font-size:22px;color:var(--slate-600);"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="../home/home.html"><i class="fa-solid fa-house" style="margin-right:10px;"></i> Home</a></li>
+                <li><a href="../home/home.html#catalog-section"><i class="fa-solid fa-store" style="margin-right:10px;"></i> Browse Store</a></li>
+                <li><a href="../customer-service.html"><i class="fa-solid fa-headset" style="margin-right:10px;"></i> Customer Service</a></li>
+                <li><a href="../cart/cart.html"><i class="fa-solid fa-cart-shopping" style="margin-right:10px;"></i> Shopping Cart</a></li>
+                <li><a href="../about.html"><i class="fa-solid fa-circle-info" style="margin-right:10px;"></i> About Qmart</a></li>
+                <li><a href="../contact.html"><i class="fa-solid fa-envelope" style="margin-right:10px;"></i> Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ================= MAIN CONTAINER ================= -->
+    <main class="details-page-wrap">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb">
+                <a href="../home/home.html">Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <a href="../home/home.html#catalog-section">Shop Catalog</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span id="breadcrumbCategory">Category</span>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span id="breadcrumbTitle" class="current">Product</span>
+            </nav>
+        </div>
+
+        <!-- Product Details Showcase -->
+        <div id="productDetails">
+            <div class="details-skeleton">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-text-block">
+                    <div class="skeleton-line" style="width: 30%;"></div>
+                    <div class="skeleton-line" style="width: 75%; height: 32px;"></div>
+                    <div class="skeleton-line" style="width: 45%;"></div>
+                    <div class="skeleton-line" style="width: 25%; height: 28px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Tabbed Information Section -->
+        <section class="product-tabs-section" id="productTabsSection" style="display:none;">
+            <div class="tabs-header-strip">
+                <button class="prod-tab-btn active" data-tab="tab-overview" onclick="switchProductTab('tab-overview', this)">Product Overview</button>
+                <button class="prod-tab-btn" data-tab="tab-specs" onclick="switchProductTab('tab-specs', this)">Specifications</button>
+                <button class="prod-tab-btn" data-tab="tab-shipping" onclick="switchProductTab('tab-shipping', this)">Shipping & Returns</button>
+                <button class="prod-tab-btn" data-tab="tab-reviews" onclick="switchProductTab('tab-reviews', this)">Customer Reviews (<span id="tabReviewCount">0</span>)</button>
+            </div>
+
+            <!-- Tab 1: Overview -->
+            <div class="tab-pane active" id="tab-overview">
+                <div class="tab-content-box">
+                    <h3>About This Product</h3>
+                    <p id="tabOverviewText" style="font-size:15px;line-height:1.7;color:var(--slate-700);"></p>
+                    
+                    <div class="overview-highlights-grid">
+                        <div class="oh-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>100% Guaranteed Authentic</strong>
+                                <span>Certified and packaged directly from authorized brand distributors.</span>
+                            </div>
+                        </div>
+                        <div class="oh-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <strong>Manufacturer Warranty</strong>
+                                <span id="tabWarrantyText">Includes full warranty protection against defects.</span>
+                            </div>
+                        </div>
+                        <div class="oh-item">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <div>
+                                <strong>Secure Priority Dispatch</strong>
+                                <span id="tabShippingText">Inspected, bubble-wrapped, and shipped with tracking.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Specs Table -->
+            <div class="tab-pane" id="tab-specs">
+                <div class="tab-content-box">
+                    <h3>Technical & Product Specifications</h3>
+                    <div id="tabSpecsTable" class="specs-table-wrap"></div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Shipping & Returns -->
+            <div class="tab-pane" id="tab-shipping">
+                <div class="tab-content-box">
+                    <h3>Shipping, Delivery & Return Policy</h3>
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <div class="p-icon"><i class="fa-solid fa-truck"></i></div>
+                            <h4>Standard & Express Delivery</h4>
+                            <p>Free standard delivery on orders over $50. Orders ship via FedEx/DHL within 24 hours of placement and arrive in 3-5 business days.</p>
+                        </div>
+                        <div class="policy-card">
+                            <div class="p-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                            <h4>30-Day Risk-Free Returns</h4>
+                            <p>If you're not completely satisfied, return this item within 30 days for a 100% refund. We provide a prepaid shipping return label.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Reviews -->
+            <div class="tab-pane" id="tab-reviews">
+                <div class="tab-content-box">
+                    <div class="reviews-top-bar">
+                        <div>
+                            <h3>Customer Ratings & Reviews</h3>
+                            <p>Real feedback from shoppers who purchased this item.</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="openWriteReviewModal()">
+                            <i class="fa-solid fa-pen-to-square"></i> Write A Review
+                        </button>
+                    </div>
+
+                    <div class="reviews-layout">
+                        <!-- Rating breakdown summary -->
+                        <div class="rating-breakdown-card" id="ratingBreakdownCard">
+                            <div class="avg-score" id="avgScoreNum">4.8</div>
+                            <div class="avg-stars" id="avgScoreStars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="total-ratings-txt" id="totalRatingsTxt">Based on 124 reviews</span>
+                            
+                            <div class="star-bars-list">
+                                <div class="star-bar-row">
+                                    <span>5 Star</span>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 78%;"></div></div>
+                                    <span>78%</span>
+                                </div>
+                                <div class="star-bar-row">
+                                    <span>4 Star</span>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 14%;"></div></div>
+                                    <span>14%</span>
+                                </div>
+                                <div class="star-bar-row">
+                                    <span>3 Star</span>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 5%;"></div></div>
+                                    <span>5%</span>
+                                </div>
+                                <div class="star-bar-row">
+                                    <span>2 Star</span>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 2%;"></div></div>
+                                    <span>2%</span>
+                                </div>
+                                <div class="star-bar-row">
+                                    <span>1 Star</span>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
+                                    <span>1%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reviews list -->
+                        <div id="reviewsList" class="reviews-list-col">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products Section -->
+        <section class="related-section" id="relatedSection" style="display:none;">
+            <div class="related-header">
+                <h2>Frequently Bought Together</h2>
+                <p>Popular choices other customers purchased in this department.</p>
+            </div>
+            <div id="relatedProductsGrid" class="product-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= WRITE A REVIEW MODAL ================= -->
+    <div class="modal-overlay" id="writeReviewModal">
+        <div class="modal-dialog" style="max-width: 520px;">
+            <button class="modal-close-btn" onclick="closeWriteReviewModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="checkout-modal-header">
+                <h2>Write A Customer Review</h2>
+                <p>Share your honest feedback to help fellow shoppers.</p>
+            </div>
+            <form onsubmit="handleReviewSubmit(event)">
+                <div class="form-control">
+                    <label>Overall Rating *</label>
+                    <div class="star-rating-picker" id="starRatingPicker">
+                        <i class="fa-solid fa-star star-pick active" data-val="1" onclick="setRatingPick(1)"></i>
+                        <i class="fa-solid fa-star star-pick active" data-val="2" onclick="setRatingPick(2)"></i>
+                        <i class="fa-solid fa-star star-pick active" data-val="3" onclick="setRatingPick(3)"></i>
+                        <i class="fa-solid fa-star star-pick active" data-val="4" onclick="setRatingPick(4)"></i>
+                        <i class="fa-solid fa-star star-pick active" data-val="5" onclick="setRatingPick(5)"></i>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label>Your Name *</label>
+                    <input type="text" id="reviewerNameInput" placeholder="Mounika Reddy" required>
+                </div>
+                <div class="form-control">
+                    <label>Review Headline / Comment *</label>
+                    <textarea id="reviewerCommentInput" rows="4" placeholder="What did you like or dislike about this product?" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; height: 46px; margin-top: 10px;">
+                    Submit Verified Review
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= VALUE PROPOSITION STRIP ================= -->
+    <section class="trust-strip">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="trust-info">
+                    <h4>Fast & Free Delivery</h4>
+                    <p>Free standard delivery on orders over $50</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="trust-info">
+                    <h4>Secure Checkout</h4>
+                    <p>Protected by 256-bit bank-grade encryption</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <div class="trust-info">
+                    <h4>30-Day Easy Returns</h4>
+                    <p>Hassle-free replacement or full refund</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="trust-info">
+                    <h4>24/7 Dedicated Support</h4>
+                    <p>Friendly customer care whenever you need</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="global-footer">
+        <div class="footer-top">
+            <div class="footer-col footer-brand">
+                <a href="../home/home.html" class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </a>
+                <p>Your premier online department store. Discover high-quality tech, skincare, fragrances, and home goods with seamless shopping and rapid doorstep delivery.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="../customer-service.html">Help Center</a></li>
+                    <li><a href="../customer-service.html#orderTrackingSection">Track My Package</a></li>
+                    <li><a href="../customer-service.html">Returns & Refunds</a></li>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                    <li><a href="../about.html">About Qmart</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="../home/home.html#catalog-section">Computers & Tech</a></li>
+                    <li><a href="../home/home.html#catalog-section">Beauty & Personal Care</a></li>
+                    <li><a href="../home/home.html#catalog-section">Luxury Fragrances</a></li>
+                    <li><a href="../home/home.html#catalog-section">Home & Living</a></li>
+                    <li><a href="../cart/cart.html">View Shopping Bag</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-newsletter">
+                <h3>Secure Shopping</h3>
+                <p>We accept major credit cards, debit cards, PayPal, and digital wallets with 256-bit SSL encryption.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>© 2026 <strong>Qmart</strong> Inc. All rights reserved.</p>
+                <p>Dedicated to delivering exceptional quality, authenticity, and customer care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../common.js"></script>
     <script src="./details.js"></script>
+
 </body>
+
 </html>
