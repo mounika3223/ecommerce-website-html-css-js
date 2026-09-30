@@ -4,169 +4,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qmart - Verified authentic tech, fragrances, beauty, groceries, and home essentials with fast delivery.">
+    <title>Qmart | Online Department Store & Everyday Essentials</title>
 
-    <title>Qmart</title>
-
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../common.css">
+    <!-- Home Specific CSS -->
     <link rel="stylesheet" href="./home.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- ================= 1. ANNOUNCEMENT & UTILITY TOP BAR ================= -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <span>Free Standard Delivery on orders over $50</span>
+            <span class="sep">•</span>
+            <span>Use coupon <strong class="coupon-code">QMART20</strong> for 20% off your purchase</span>
+            <span class="sep">•</span>
+            <span>24/7 Support: <strong>1-800-QMART</strong></span>
+        </div>
+    </div>
 
-    <nav id="navbar">
+    <!-- ================= 2. MAIN HEADER (BRAND + SEARCH + ACTIONS) ================= -->
+    <header class="main-header">
+        <div class="navbar-inner">
 
-        <!-- Logo -->
-        <a href="" class="logo">
-            <b>Qmart</b>
-        </a>
+            <!-- Brand Logo -->
+            <a href="./home.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <span>Qmart<span class="dot">.</span></span>
+            </a>
 
-        <!-- Navigation Links -->
-        <div class="navlinks">
-            <a href="">Home</a>
-            <a href="../about.html">About</a>
-             <a href="../contact.html">Contact</a>
-            <a href="../cart/cart.html">Cart</a>
+            <!-- Search Bar with Live Suggestions Dropdown (SEO Optimized with Schema.org SearchAction) -->
+            <div class="header-search-container" itemscope itemtype="https://schema.org/WebSite">
+                <meta itemprop="url" content="./home.html"/>
+                <form role="search" 
+                      method="get" 
+                      action="./home.html" 
+                      class="header-search" 
+                      itemprop="potentialAction" 
+                      itemscope 
+                      itemtype="https://schema.org/SearchAction" 
+                      onsubmit="event.preventDefault(); applyFilters();">
+                    <meta itemprop="target" content="./home.html?q={search_term_string}"/>
+                    <label for="searchproduct" class="sr-only">Search tech, beauty, fragrances, groceries</label>
+                    <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                    <input type="search" 
+                           id="searchproduct" 
+                           name="search_term_string" 
+                           placeholder="Search tech, beauty, fragrances, groceries..." 
+                           autocomplete="off" 
+                           spellcheck="false" 
+                           aria-label="Search tech, beauty, fragrances, groceries" 
+                           aria-autocomplete="list" 
+                           aria-controls="searchDropdown" 
+                           itemprop="query-input" 
+                           required>
+                    <i class="fa-solid fa-xmark clear-search" id="clearSearchBtn" title="Clear search" aria-label="Clear search input"></i>
+                </form>
+                <div id="searchDropdown" class="search-dropdown-menu" role="listbox" aria-label="Search suggestions" style="display:none;"></div>
+            </div>
+
+            <!-- Header Quick Action Tools -->
+            <div class="header-actions">
+                <!-- Customer Service -->
+                <a href="../customer-service.html" class="action-btn" title="Help & Customer Service">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Customer Service</span>
+                </a>
+
+                <!-- Track Orders -->
+                <a href="../customer-service.html#orderTrackingSection" class="action-btn" title="Track your package">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Track Order</span>
+                </a>
+
+                <!-- Sign In / Account -->
+                <a href="../registratuion&login/login.html" class="action-btn user-account-btn" id="accountBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Sign In</span>
+                </a>
+
+                <!-- Wishlist / Saved -->
+                <button class="action-btn" id="wishlistHeaderBtn" onclick="openWishlistDrawer()" title="View Saved Items">
+                    <i class="fa-regular fa-heart"></i>
+                    <span>Saved</span>
+                    <span class="badge-count" id="wishlistCount" style="display:none;">0</span>
+                </button>
+
+                <!-- Shopping Bag -->
+                <a href="../cart/cart.html" class="cart-pill-btn" id="cartNavBtn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
 
         </div>
 
+        <!-- ================= 3. SECONDARY NAVIGATION & DEPARTMENTS BAR ================= -->
+        <nav class="departments-nav">
+            <div class="departments-container">
+                <a href="./home.html" class="dept-link active">Home</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('all')">All Products</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('laptops')">Computers & Tech</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('smartphones')">Smartphones</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('fragrances')">Fragrances</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('beauty')">Beauty & Skincare</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('groceries')">Groceries</a>
+                <a href="#catalog-section" class="dept-link" onclick="filterDepartment('home-decoration')">Home & Living</a>
 
-        <!-- Search -->
+                <!-- Right Utility Links in Navigation -->
+                <div class="dept-right-links">
+                    <a href="../customer-service.html" class="dept-link nav-highlight">
+                        <i class="fa-solid fa-shield-halved"></i> Customer Service
+                    </a>
+                    <a href="../about.html" class="dept-link">About Qmart</a>
+                    <a href="../contact.html" class="dept-link">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        <div class="search">
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="mobile-drawer-content">
+            <div class="mobile-drawer-header">
+                <div class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </div>
+                <button class="mobile-drawer-close" onclick="toggleMobileDrawer()" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="./home.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#catalog-section" onclick="toggleMobileDrawer(); filterDepartment('all');"><i class="fa-solid fa-store"></i> All Products</a></li>
+                <li><a href="#catalog-section" onclick="toggleMobileDrawer(); filterDepartment('laptops');"><i class="fa-solid fa-laptop"></i> Computers & Tech</a></li>
+                <li><a href="#catalog-section" onclick="toggleMobileDrawer(); filterDepartment('fragrances');"><i class="fa-solid fa-spray-can-sparkles"></i> Fragrances</a></li>
+                <li><a href="#catalog-section" onclick="toggleMobileDrawer(); filterDepartment('beauty');"><i class="fa-solid fa-wand-magic-sparkles"></i> Beauty & Skincare</a></li>
+                <li><a href="#catalog-section" onclick="toggleMobileDrawer(); filterDepartment('groceries');"><i class="fa-solid fa-basket-shopping"></i> Groceries</a></li>
+                <li><a href="../customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service & FAQ</a></li>
+                <li><a href="../customer-service.html#orderTrackingSection"><i class="fa-solid fa-truck-fast"></i> Track Package</a></li>
+                <li><a href="../cart/cart.html"><i class="fa-solid fa-cart-shopping"></i> Shopping Cart</a></li>
+                <li><a href="../about.html"><i class="fa-solid fa-circle-info"></i> About Qmart</a></li>
+                <li><a href="../contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                <li><a href="../registratuion&login/login.html"><i class="fa-solid fa-user"></i> Account / Sign In</a></li>
+            </ul>
+        </div>
+    </div>
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+    <!-- ================= 4. RESPONSIVE HERO BANNER ================= -->
+    <section class="hero-commercial-section">
+        <div class="hero-commercial-container">
+            
+            <!-- Main Hero Card -->
+            <div class="hero-main-card">
+                <div class="hero-text-block">
+                    <span class="hero-retail-pill">Official Retail Partner • 100% Authentic</span>
+                    <h1>Quality Everyday Essentials, Delivered Direct to Your Door.</h1>
+                    <p>Shop handpicked laptops, designer fragrances, dermatologist-approved skincare, and pantry goods with guaranteed fast shipping and 30-day risk-free returns.</p>
+                    <div class="hero-btn-row">
+                        <a href="#catalog-section" class="btn btn-primary" onclick="filterDepartment('all')">
+                            <i class="fa-solid fa-bag-shopping"></i> Shop All Products
+                        </a>
+                        <button class="btn btn-secondary" onclick="filterDealsOnly()">
+                            <i class="fa-solid fa-tag"></i> View On-Sale Deals
+                        </button>
+                    </div>
+                </div>
 
-            <input type="text" placeholder="Search products" id="searchproduct">
+                <!-- Verified working thumbnail from catalog -->
+                <div class="hero-visual-thumb">
+                    <img src="https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/thumbnail.webp" alt="Featured Tech Product" id="heroFeaturedImg">
+                    <div class="hero-floating-tag">
+                        <strong>MacBook Pro 14"</strong>
+                        <span>From $1,999.99 • In Stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Featured Department Tiles -->
+            <div class="hero-side-tiles">
+                <div class="side-dept-tile" onclick="filterDepartment('fragrances')">
+                    <div class="tile-info">
+                        <span class="tile-tag">Designer Scents</span>
+                        <h3>Luxury Fragrances</h3>
+                        <p>Authentic perfumes & colognes</p>
+                        <span class="tile-cta">Shop Scents <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <img src="https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/thumbnail.webp" alt="Perfume Tile">
+                </div>
+
+                <div class="side-dept-tile" onclick="filterDepartment('beauty')">
+                    <div class="tile-info">
+                        <span class="tile-tag">Personal Care</span>
+                        <h3>Beauty & Skincare</h3>
+                        <p>Dermatologist-tested formulas</p>
+                        <span class="tile-cta">Shop Beauty <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp" alt="Beauty Tile">
+                </div>
+            </div>
 
         </div>
+    </section>
 
+    <!-- ================= 5. FLUID TRUST STRIP ================= -->
+    <section class="trust-strip">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="trust-info">
+                    <h4>Fast & Free Delivery</h4>
+                    <p>Free standard shipping on orders over $50</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-certificate"></i></div>
+                <div class="trust-info">
+                    <h4>100% Genuine Guaranteed</h4>
+                    <p>Direct from verified authorized distributors</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <div class="trust-info">
+                    <h4>30-Day Easy Returns</h4>
+                    <p>Hassle-free replacement or full refund</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="trust-info">
+                    <h4>24/7 Dedicated Support</h4>
+                    <p>Live human assistance whenever you need</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Cart -->
+    <!-- ================= 6. CATALOG SECTION WITH DEDICATED FILTER SYSTEM ================= -->
+    <section class="catalog-section" id="catalog-section">
 
-        <a href="" class="cart">
+        <!-- Mobile Filter Toggle Bar (< 960px) -->
+        <div class="mobile-filter-bar">
+            <button class="btn btn-secondary btn-mobile-filter" onclick="toggleMobileFilterDrawer()">
+                <i class="fa-solid fa-sliders"></i> Filter & Refine (<span id="mobileFilterCount">0</span>)
+            </button>
+            <div class="select-wrapper">
+                <select id="mobileSortSelect" onchange="syncSort(this.value)">
+                    <option value="default">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="discount">Biggest Discount</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+            </div>
+        </div>
 
-            <i class="fa-solid fa-cart-shopping"></i>
+        <!-- Filter Drawer Backdrop for Mobile Viewports -->
+        <div class="filter-drawer-backdrop" id="filterDrawerBackdrop" onclick="toggleMobileFilterDrawer()"></div>
 
-            <span>Cart</span>
+        <div class="catalog-layout-grid">
 
-        </a>
+            <!-- LEFT: FILTER SIDEBAR -->
+            <aside class="catalog-sidebar" id="catalogSidebar">
+                <div class="sidebar-header">
+                    <h3>Filter Products</h3>
+                    <button class="sidebar-reset-btn" onclick="resetAllFilters()">Reset All</button>
+                    <button class="sidebar-close-btn" onclick="toggleMobileFilterDrawer()" aria-label="Close Filter">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
 
-    </nav>
+                <!-- 1. Department / Category Filter -->
+                <div class="filter-group">
+                    <h4 class="filter-title">Department</h4>
+                    <div class="filter-options-list" id="categoryFilterList">
+                        <!-- Populated dynamically with real item counts -->
+                    </div>
+                </div>
 
+                <!-- 2. Price Range Filter -->
+                <div class="filter-group">
+                    <h4 class="filter-title">Price Range</h4>
+                    <div class="filter-options-list">
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="priceRange" value="all" checked onchange="handlePriceRadio('all')">
+                            <span>All Prices</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="priceRange" value="under25" onchange="handlePriceRadio('under25')">
+                            <span>Under $25</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="priceRange" value="25to100" onchange="handlePriceRadio('25to100')">
+                            <span>$25 to $100</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="priceRange" value="100to500" onchange="handlePriceRadio('100to500')">
+                            <span>$100 to $500</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="priceRange" value="over500" onchange="handlePriceRadio('over500')">
+                            <span>Over $500</span>
+                        </label>
+                    </div>
 
-    <!-- ================= PRODUCTS ================= -->
+                    <!-- Custom Price Range Inputs -->
+                    <div class="custom-price-inputs">
+                        <input type="number" id="minPriceInput" placeholder="Min $" min="0">
+                        <span>to</span>
+                        <input type="number" id="maxPriceInput" placeholder="Max $" min="0">
+                        <button type="button" class="btn-price-apply" onclick="applyCustomPrice()">Go</button>
+                    </div>
+                </div>
 
-    <div id="productcontainer"></div>
-    <!-- ================= FOOTER ================= -->
+                <!-- 3. Customer Rating Filter -->
+                <div class="filter-group">
+                    <h4 class="filter-title">Customer Rating</h4>
+                    <div class="filter-options-list">
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="minRating" value="0" checked onchange="handleRatingFilter(0)">
+                            <span>All Ratings</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="minRating" value="4.5" onchange="handleRatingFilter(4.5)">
+                            <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span>
+                            <span>4.5 & Above</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="minRating" value="4.0" onchange="handleRatingFilter(4.0)">
+                            <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                            <span>4.0 & Above</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="radio" name="minRating" value="3.0" onchange="handleRatingFilter(3.0)">
+                            <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                            <span>3.0 & Above</span>
+                        </label>
+                    </div>
+                </div>
 
-<footer class="footer">
+                <!-- 4. Availability & Deals -->
+                <div class="filter-group">
+                    <h4 class="filter-title">Special Offers & Stock</h4>
+                    <div class="filter-options-list">
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" id="inStockCheckbox" onchange="handleStockFilter(this.checked)">
+                            <span>In Stock Only</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" id="onSaleCheckbox" onchange="handleSaleFilter(this.checked)">
+                            <span>On Sale (Discounted)</span>
+                        </label>
+                    </div>
+                </div>
 
-    <div class="footer-container">
+                <div class="sidebar-apply-mobile">
+                    <button class="btn btn-primary" style="width: 100%;" onclick="toggleMobileFilterDrawer()">
+                        Apply Filters (<span id="sidebarApplyCount">0</span> Items)
+                    </button>
+                </div>
+            </aside>
 
-        <!-- Brand -->
-        <div class="footer-section footer-brand">
+            <!-- RIGHT: PRODUCTS MAIN AREA -->
+            <div class="catalog-main">
 
-            <h2>Qmart</h2>
+                <!-- Toolbar (Count + Active Badges + Sort) -->
+                <div class="catalog-toolbar">
+                    <div class="toolbar-left">
+                        <span id="productCounter" class="product-counter">Loading items...</span>
+                        <div id="activeFilterTags" class="active-filter-tags"></div>
+                    </div>
 
-            <p>
-                Your simple and smart shopping experience.
-                Explore products, discover what you need,
-                and shop with ease.
-            </p>
+                    <div class="toolbar-right">
+                        <label for="sortProducts" class="sort-label">Sort By:</label>
+                        <div class="select-wrapper">
+                            <select id="sortProducts" onchange="syncSort(this.value)">
+                                <option value="default">Featured Selection</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Highest Customer Rating</option>
+                                <option value="discount">Biggest Discount (%)</option>
+                                <option value="title-az">Name: A to Z</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-chevron"></i>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="social-icons">
+                <!-- Product Grid -->
+                <div id="productcontainer" class="product-grid">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
 
-                <a href="#" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+                <!-- Load More / Pagination -->
+                <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+                    <button class="btn btn-secondary load-more-btn" id="loadMoreBtn" onclick="loadMoreProducts()">
+                        <i class="fa-solid fa-arrow-down"></i> Load More Products (<span id="remainingCount">0</span> remaining)
+                    </button>
+                </div>
 
-                <a href="#" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-
-                <a href="#" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
+                <!-- Empty State -->
+                <div id="emptyCatalogState" class="empty-state" style="display: none;">
+                    <div class="empty-state-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>No products match your filters</h3>
+                    <p>Try resetting some of your filter criteria to view more items from our catalog.</p>
+                    <button class="btn btn-primary" onclick="resetAllFilters()">Reset All Filters</button>
+                </div>
 
             </div>
 
         </div>
 
+    </section>
 
-        <!-- Quick Links -->
-        <div class="footer-section">
-
-            <h3>Quick Links</h3>
-
-            <a href="">Home</a>
-            <a href="../about.html">About</a>
-             <a href="../contact.html">Contact</a>
-            <a href="">Cart</a>
-
+    <!-- ================= 7. QUICK VIEW MODAL ================= -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-dialog modal-quick-view">
+            <button class="modal-close-btn" onclick="closeQuickViewModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quickViewContent" class="quick-view-body">
+                <!-- Dynamically rendered by home.js -->
+            </div>
         </div>
-
-
-        <!-- Customer Support -->
-        <div class="footer-section">
-
-            <h3>Customer Support</h3>
-
-            <a href="#">Help Center</a>
-            <a href="#">Shipping & Delivery</a>
-            <a href="#">Returns & Refunds</a>
-            <a href="#">Privacy Policy</a>
-
-        </div>
-
-
-        <!-- Contact -->
-        <div class="footer-section">
-
-            <h3>Get In Touch</h3>
-
-            <p>
-                <i class="fa-solid fa-envelope"></i>
-                support@qmart.com
-            </p>
-
-            <p>
-                <i class="fa-solid fa-phone"></i>
-                +91 98765 43210
-            </p>
-
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                Hyderabad, India
-            </p>
-
-        </div>
-
     </div>
 
-
-    <!-- Bottom Footer -->
-
-    <div class="footer-bottom">
-
-        <p>
-            © 2026 <strong>Qmart</strong>. All rights reserved.
-        </p>
-
-        <p>
-            Built with <i class="fa-solid fa-heart"></i>
-            using HTML, CSS & JavaScript
-        </p>
-
+    <!-- ================= 8. WISHLIST DRAWER MODAL ================= -->
+    <div class="modal-overlay" id="wishlistModal">
+        <div class="modal-dialog" style="max-width: 520px;">
+            <button class="modal-close-btn" onclick="closeWishlistModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="checkout-modal-header">
+                <h2>Your Saved Items</h2>
+                <p>Items you've bookmarked for later. Move them to your cart with one click.</p>
+            </div>
+            <div id="wishlistItemsContainer" class="wishlist-items-container">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
     </div>
 
-</footer>
+    <!-- ================= 9. NEWSLETTER BANNER ================= -->
+    <section class="newsletter-section">
+        <div class="newsletter-card">
+            <div class="newsletter-content">
+                <span class="newsletter-badge"><i class="fa-solid fa-envelope"></i> Newsletter</span>
+                <h2>Get 20% Off Your Next Purchase</h2>
+                <p>Subscribe to receive exclusive retail savings, flash sale alerts, and weekly product drops. No spam ever.</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address..." required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
 
+    <!-- ================= 10. GLOBAL FOOTER ================= -->
+    <footer class="global-footer">
+        <div class="footer-top">
 
+            <!-- Brand Column -->
+            <div class="footer-col footer-brand">
+                <a href="./home.html" class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </a>
+                <p>
+                    Your premier online department store. Discover handpicked electronics, luxury fragrances, skincare, and everyday lifestyle goods with guaranteed authentic quality and rapid doorstep delivery.
+                </p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Customer Service Column -->
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="../customer-service.html">Help Center & FAQ</a></li>
+                    <li><a href="../customer-service.html#orderTrackingSection">Track My Package</a></li>
+                    <li><a href="../customer-service.html">Returns & Exchanges</a></li>
+                    <li><a href="../contact.html">Customer Support Line</a></li>
+                    <li><a href="../about.html">About Qmart</a></li>
+                </ul>
+            </div>
+
+            <!-- Departments Column -->
+            <div class="footer-col">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="#catalog-section" onclick="filterDepartment('laptops')">Computers & Tech</a></li>
+                    <li><a href="#catalog-section" onclick="filterDepartment('fragrances')">Luxury Fragrances</a></li>
+                    <li><a href="#catalog-section" onclick="filterDepartment('beauty')">Beauty & Skincare</a></li>
+                    <li><a href="#catalog-section" onclick="filterDepartment('groceries')">Groceries & Pantry</a></li>
+                    <li><a href="../cart/cart.html">View Shopping Bag</a></li>
+                </ul>
+            </div>
+
+            <!-- Payment & Security -->
+            <div class="footer-col footer-newsletter">
+                <h3>Secure Shopping</h3>
+                <p>We accept major credit cards, debit cards, PayPal, and digital wallets protected by 256-bit SSL encryption.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+                    <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+                    <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>© 2026 <strong>Qmart</strong> Inc. All rights reserved.</p>
+                <p>Dedicated to delivering exceptional quality, authenticity, and customer care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../common.js"></script>
     <script src="./home.js"></script>
 
 </body>

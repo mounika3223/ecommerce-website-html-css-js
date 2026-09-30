@@ -1,22 +1,52 @@
-document.getElementById("formContainer").addEventListener("submit",(e)=>{
-    e.preventDefault();
-    let name=document.getElementById("name").value;
-    let email=document.getElementById("email").value;
-    let mobile=document.getElementById("mobile").value;
-    let password=document.getElementById("password").value;
-    console.log(name,email,mobile,password);
-    let userdata={
+/**
+ * Qmart - Registration Script (register.js)
+ */
 
-        username: name,
-        useremail:email,
-        userpassword:password,
-        usermobile:mobile,
+document.addEventListener("DOMContentLoaded", () => {
+    // Password toggle
+    const toggle = document.getElementById("togglePwd");
+    const pwdInput = document.getElementById("password");
+    if (toggle && pwdInput) {
+        toggle.addEventListener("click", () => {
+            const isText = pwdInput.type === "text";
+            pwdInput.type = isText ? "password" : "text";
+            toggle.className = isText ? "fa-regular fa-eye toggle-pwd" : "fa-regular fa-eye-slash toggle-pwd";
+        });
+    }
 
-    };
-    console.log(userdata);
-    localStorage.setItem("userinfo",JSON.stringify(userdata));
-    alert("Account created successfully!!!");
-    window.location.href="./login.html";
+    // Form submit
+    const form = document.getElementById("formContainer");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mobile = document.getElementById("mobile").value.trim();
+            const password = document.getElementById("password").value;
 
+            const userdata = {
+                username: name,
+                useremail: email,
+                userpassword: password,
+                usermobile: mobile,
+                registeredAt: new Date().toISOString()
+            };
+
+            // Save user credentials
+            localStorage.setItem("userinfo", JSON.stringify(userdata));
+
+            // Log user in automatically
+            localStorage.setItem("qmart_user", JSON.stringify({
+                name: name,
+                email: email
+            }));
+
+            showToast("Account Created!", `Welcome, ${name}! Your account has been registered.`);
+
+            setTimeout(() => {
+                window.location.href = "../home/home.html";
+            }, 1200);
+        });
+    }
 });

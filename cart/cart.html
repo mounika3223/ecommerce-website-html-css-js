@@ -1,18 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping Cart | Qmart</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../common.css">
+    <!-- Cart Specific CSS -->
     <link rel="stylesheet" href="./cart.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
-    <div id="cartContainer">
-    <div id="cartContent"></div>
-    <div id="totalPrice"></div>
+
+    <!-- ================= ANNOUNCEMENT BAR ================= -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <span>✨ Apply code <strong class="coupon-code">QMART20</strong> for 20% off at checkout</span>
+            <span class="sep">•</span>
+            <span>Free Express Delivery on orders over $50</span>
+        </div>
+        <div class="announcement-links">
+            <a href="../contact.html"><i class="fa-solid fa-headset"></i> Support</a>
+            <a href="../about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+        </div>
     </div>
-    
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="main-header">
+        <div class="navbar-inner">
+            <a href="../home/home.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <span>Qmart<span class="dot">.</span></span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="../home/home.html" class="nav-link">Home</a></li>
+                <li><a href="../home/home.html#catalog-section" class="nav-link">Shop</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="header-actions" style="margin-left: auto;">
+                <a href="../registratuion&login/login.html" class="action-btn user-account-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Sign In</span>
+                </a>
+
+                <a href="./cart.html" class="cart-pill-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer">
+        <div class="mobile-drawer-content">
+            <div class="mobile-drawer-header">
+                <div class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </div>
+                <button class="mobile-drawer-close" aria-label="Close menu" style="background:none;font-size:22px;color:var(--slate-600);"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="../home/home.html"><i class="fa-solid fa-house" style="margin-right:10px;"></i> Home</a></li>
+                <li><a href="../home/home.html#catalog-section"><i class="fa-solid fa-store" style="margin-right:10px;"></i> Browse Catalog</a></li>
+                <li><a href="./cart.html" class="active"><i class="fa-solid fa-cart-shopping" style="margin-right:10px;"></i> Shopping Cart</a></li>
+                <li><a href="../about.html"><i class="fa-solid fa-circle-info" style="margin-right:10px;"></i> About Us</a></li>
+                <li><a href="../contact.html"><i class="fa-solid fa-envelope" style="margin-right:10px;"></i> Contact Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ================= MAIN CART CONTENT ================= -->
+    <main class="cart-page-wrap">
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb">
+                <a href="../home/home.html">Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span class="current">Shopping Bag</span>
+            </nav>
+        </div>
+
+        <div class="cart-page-header">
+            <div>
+                <h1>Your Shopping Bag</h1>
+                <p id="cartItemsSubtitle">Review your chosen products and proceed to checkout.</p>
+            </div>
+            <button class="btn-clear-cart" id="clearCartBtn" style="display:none;" onclick="clearAllCart()">
+                <i class="fa-regular fa-trash-can"></i> Clear Bag
+            </button>
+        </div>
+
+        <!-- 2-Column Cart Layout -->
+        <div id="cartContainer" class="cart-layout">
+            
+            <!-- Left: Cart Items List -->
+            <div class="cart-left-col">
+                <!-- Free Shipping Progress Tracker -->
+                <div class="shipping-threshold-card" id="shippingThresholdCard" style="display:none;">
+                    <div class="st-header">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span id="stMessage">Add $0.00 more to qualify for FREE shipping!</span>
+                    </div>
+                    <div class="st-bar-track">
+                        <div class="st-bar-fill" id="stFill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div id="cartContent" class="cart-items-list">
+                    <!-- Populated by cart.js -->
+                </div>
+
+                <div class="cart-footer-links" id="cartNavBack">
+                    <a href="../home/home.html#catalog-section" class="btn-continue-shopping">
+                        <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Order Summary -->
+            <div class="cart-right-col" id="orderSummaryCol">
+                <div class="order-summary-card">
+                    <h2>Order Summary</h2>
+
+                    <div class="summary-line">
+                        <span>Items Subtotal</span>
+                        <span id="summarySubtotal">$0.00</span>
+                    </div>
+
+                    <div class="summary-line">
+                        <span>Estimated Shipping</span>
+                        <span id="summaryShipping">$0.00</span>
+                    </div>
+
+                    <div class="summary-line">
+                        <span>Estimated Tax (8%)</span>
+                        <span id="summaryTax">$0.00</span>
+                    </div>
+
+                    <!-- Discount Line -->
+                    <div class="summary-line discount-line" id="discountRow" style="display: none;">
+                        <span>Coupon Discount (<strong id="appliedCodeText">QMART20</strong>)</span>
+                        <span id="summaryDiscount" class="text-success">-$0.00</span>
+                    </div>
+
+                    <hr class="summary-divider">
+
+                    <div class="summary-total-row">
+                        <span>Estimated Total</span>
+                        <span id="summaryTotal">$0.00</span>
+                    </div>
+
+                    <!-- Coupon Code Input -->
+                    <div class="coupon-box">
+                        <label for="couponInput">Have a discount coupon?</label>
+                        <div class="coupon-input-group">
+                            <input type="text" id="couponInput" placeholder="Try QMART20" uppercase>
+                            <button id="applyCouponBtn" onclick="applyCoupon()">Apply</button>
+                        </div>
+                        <span id="couponMsg" class="coupon-feedback" style="display:none;"></span>
+                    </div>
+
+                    <!-- Checkout CTA -->
+                    <button class="btn-checkout" id="checkoutBtn" onclick="openCheckoutModal()">
+                        <i class="fa-solid fa-lock"></i> Proceed to Checkout
+                    </button>
+
+                    <!-- Trust & Guarantee -->
+                    <div class="checkout-trust-badges">
+                        <div class="trust-badge-row">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Bank-level 256-Bit SSL Encryption</span>
+                        </div>
+                        <div class="trust-badge-row">
+                            <i class="fa-solid fa-rotate-left"></i>
+                            <span>30-Day Money Back Guarantee</span>
+                        </div>
+                        <div class="payment-icons-row">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-paypal"></i>
+                            <i class="fa-brands fa-cc-apple-pay"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ================= CHECKOUT MODAL ================= -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-dialog">
+            <button class="modal-close-btn" onclick="closeCheckoutModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="checkout-modal-header">
+                <h2>Express Checkout</h2>
+                <p>Complete your delivery and payment details to place your order.</p>
+            </div>
+
+            <form id="checkoutForm" onsubmit="handlePlaceOrder(event)">
+                <div class="form-section-title">1. Shipping Address</div>
+                <div class="form-grid">
+                    <div class="form-field full-width">
+                        <label>Full Name</label>
+                        <input type="text" id="shipName" placeholder="Mounika Reddy" required>
+                    </div>
+                    <div class="form-field full-width">
+                        <label>Delivery Address</label>
+                        <input type="text" id="shipAddress" placeholder="123 Shopping Avenue, Suite 400" required>
+                    </div>
+                    <div class="form-field">
+                        <label>City</label>
+                        <input type="text" id="shipCity" placeholder="Hyderabad" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Postal Code</label>
+                        <input type="text" id="shipZip" placeholder="500081" required>
+                    </div>
+                    <div class="form-field full-width">
+                        <label>Phone Number</label>
+                        <input type="tel" id="shipPhone" placeholder="+91 98765 43210" required>
+                    </div>
+                </div>
+
+                <div class="form-section-title" style="margin-top:20px;">2. Payment Method</div>
+                <div class="payment-options">
+                    <label class="pay-option active">
+                        <input type="radio" name="paymentMethod" value="card" checked>
+                        <span><i class="fa-regular fa-credit-card"></i> Credit / Debit Card</span>
+                    </label>
+                    <label class="pay-option">
+                        <input type="radio" name="paymentMethod" value="upi">
+                        <span><i class="fa-solid fa-mobile-screen"></i> UPI / Digital Wallet</span>
+                    </label>
+                    <label class="pay-option">
+                        <input type="radio" name="paymentMethod" value="cod">
+                        <span><i class="fa-solid fa-hand-holding-dollar"></i> Cash on Delivery</span>
+                    </label>
+                </div>
+
+                <div class="checkout-modal-total">
+                    <span>Order Total:</span>
+                    <strong id="modalTotalAmount">$0.00</strong>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; height: 50px; font-size: 16px;">
+                    <i class="fa-solid fa-lock"></i> Place Order Now
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= ORDER SUCCESS MODAL ================= -->
+    <div class="modal-overlay" id="orderSuccessModal">
+        <div class="modal-dialog" style="text-align: center; max-width: 500px;">
+            <div class="success-icon-wrap">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 style="font-size: 26px; font-weight: 800; color: var(--slate-900); margin-bottom: 8px;">Order Placed Successfully!</h2>
+            <p style="color: var(--slate-600); font-size: 14.5px; margin-bottom: 20px;">
+                Thank you for your purchase. We have received your order and are getting it ready for shipment.
+            </p>
+
+            <div class="order-receipt-box">
+                <div class="receipt-row">
+                    <span>Order Reference:</span>
+                    <strong id="receiptOrderNum">#QM-84920</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Estimated Delivery:</span>
+                    <strong id="receiptDeliveryDate">3-5 Business Days</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Amount Paid:</span>
+                    <strong id="receiptAmount" style="color: var(--primary);">$0.00</strong>
+                </div>
+            </div>
+
+            <a href="../home/home.html" class="btn btn-primary" style="width: 100%;">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= VALUE PROPOSITION STRIP ================= -->
+    <section class="trust-strip">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="trust-info">
+                    <h4>Fast & Free Delivery</h4>
+                    <p>Free express delivery on orders over $50</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="trust-info">
+                    <h4>Secure Checkout</h4>
+                    <p>Protected by 256-bit bank-grade encryption</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <div class="trust-info">
+                    <h4>30-Day Easy Returns</h4>
+                    <p>Hassle-free replacement or full refund</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="trust-info">
+                    <h4>24/7 Dedicated Support</h4>
+                    <p>Friendly customer care whenever you need</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="global-footer">
+        <div class="footer-top">
+            <div class="footer-col footer-brand">
+                <a href="../home/home.html" class="brand-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>Qmart<span class="dot">.</span></span>
+                </a>
+                <p>Your premier online shopping destination. Discover high-quality tech, skincare, fragrances, and home goods with seamless shopping and rapid doorstep delivery.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../home/home.html">Home</a></li>
+                    <li><a href="../home/home.html#catalog-section">Shop Catalog</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                    <li><a href="./cart.html">Shopping Cart</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="../contact.html">Help Center</a></li>
+                    <li><a href="#">Shipping & Tracking</a></li>
+                    <li><a href="#">30-Day Returns</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-newsletter">
+                <h3>Secure Shopping</h3>
+                <p>We accept major credit cards, debit cards, PayPal, and digital wallets with 256-bit SSL encryption.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>© 2026 <strong>Qmart</strong> Inc. All rights reserved.</p>
+                <p>Designed with care for a modern, seamless e-commerce experience.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../common.js"></script>
     <script src="./cart.js"></script>
-    
+
 </body>
+
 </html>
